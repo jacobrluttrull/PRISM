@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}PRISM | {{ project.name }}{% endblock %}
+
+{% block content %}
+  <h1>{{ project.name }}</h1>
+  <div class="card">
+    <p><strong>Path</strong></p>
+    <p class="muted">{{ project.path }}</p>
+    <p><strong>Status</strong></p>
+    <p class="muted">{{ project.status|title }}</p>
+    {% if project.tech_stack %}
+      <p><strong>Tech stack</strong></p>
+      <p class="muted">{{ project.tech_stack }}</p>
+    {% endif %}
+    {% if project.repo_url %}
+      <p><strong>Repository</strong></p>
+      <p class="muted"><a href="{{ project.repo_url }}">{{ project.repo_url }}</a></p>
+    {% endif %}
+    {% if project.estimated_hours is not none %}
+      <p><strong>Estimated hours</strong></p>
+      <p class="muted">{{ project.estimated_hours }}</p>
+    {% endif %}
+    {% if project.description %}
+      <p><strong>Description</strong></p>
+      <p class="muted">{{ project.description }}</p>
+    {% endif %}
+    <a class="action-link" href="/">Back to projects</a>
+  </div>
+{% endblock %}

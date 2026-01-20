@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}PRISM | Add Project{% endblock %}
+
+{% block content %}
+  <h1>Add a project</h1>
+  <div class="card">
+    <form method="post" action="/projects/new">
+      <div class="form-row">
+        <label for="name">Project name</label>
+        <input id="name" name="name" type="text" placeholder="PRISM" required />
+      </div>
+      <div class="form-row">
+        <label for="path">Local path</label>
+        <input
+          id="path"
+          name="path"
+          type="text"
+          placeholder="C:\\Projects\\PRISM"
+          required
+        />
+      </div>
+      <div class="form-row">
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          placeholder="Quick note about the project."
+        ></textarea>
+      </div>
+      <div class="form-row">
+        <label for="status">Status</label>
+        <select id="status" name="status">
+          <option value="active" selected>Active</option>
+          <option value="paused">Paused</option>
+          <option value="archived">Archived</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="tech_stack">Tech stack</label>
+        <input
+          id="tech_stack"
+          name="tech_stack"
+          type="text"
+          placeholder="Python, FastAPI, SQLModel"
+        />
+      </div>
+      <div class="form-row">
+        <label for="repo_url">Repository URL</label>
+        <input
+          id="repo_url"
+          name="repo_url"
+          type="url"
+          placeholder="https://github.com/you/project"
+        />
+      </div>
+      <div class="form-row">
+        <label for="estimated_hours">Estimated hours</label>
+        <input
+          id="estimated_hours"
+          name="estimated_hours"
+          type="number"
+          min="0"
+          step="1"
+          placeholder="40"
+        />
+      </div>
+      <button type="submit">Save project</button>
+    </form>
+  </div>
+{% endblock %}
