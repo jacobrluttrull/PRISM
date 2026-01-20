@@ -25,6 +25,10 @@
       <p><strong>Description</strong></p>
       <p class="muted">{{ project.description }}</p>
     {% endif %}
+    <a class="action-link" href="/projects/{{ project.id }}/edit">Edit project</a>
+    <form method="post" action="/projects/{{ project.id }}/delete">
+      <button type="submit">Delete project</button>
+    </form>
     <a class="action-link" href="/">Back to projects</a>
   </div>
 {% endblock %}

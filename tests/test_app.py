@@ -6,6 +6,8 @@ def test_routes_registered():
     assert "/" in paths
     assert "/projects/new" in paths
     assert "/projects/{project_id}" in paths
+    assert "/projects/{project_id}/edit" in paths
+    assert "/projects/{project_id}/delete" in paths
 
 
 def test_project_create_route_accepts_post():
@@ -15,3 +17,5 @@ def test_project_create_route_accepts_post():
         for method in getattr(route, "methods", [])
     }
     assert ("/projects/new", "POST") in route_methods
+    assert ("/projects/{project_id}/edit", "POST") in route_methods
+    assert ("/projects/{project_id}/delete", "POST") in route_methods

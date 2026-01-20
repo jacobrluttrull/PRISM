@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}PRISM | Edit {{ project.name }}{% endblock %}
+
+{% block content %}
+  <h1>Edit project</h1>
+  <div class="card">
+    <form method="post" action="/projects/{{ project.id }}/edit">
+      <div class="form-row">
+        <label for="name">Project name</label>
+        <input id="name" name="name" type="text" value="{{ project.name }}" required />
+      </div>
+      <div class="form-row">
+        <label for="path">Local path</label>
+        <input id="path" name="path" type="text" value="{{ project.path }}" required />
+      </div>
+      <div class="form-row">
+        <label for="description">Description</label>
+        <textarea id="description" name="description">{{ project.description or "" }}</textarea>
+      </div>
+      <div class="form-row">
+        <label for="status">Status</label>
+        <select id="status" name="status">
+          <option value="active" {% if project.status == "active" %}selected{% endif %}>Active</option>
+          <option value="paused" {% if project.status == "paused" %}selected{% endif %}>Paused</option>
+          <option value="archived" {% if project.status == "archived" %}selected{% endif %}>Archived</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="tech_stack">Tech stack</label>
+        <input
+          id="tech_stack"
+          name="tech_stack"
+          type="text"
+          value="{{ project.tech_stack or "" }}"
+        />
+      </div>
+      <div class="form-row">
+        <label for="repo_url">Repository URL</label>
+        <input
+          id="repo_url"
+          name="repo_url"
+          type="url"
+          value="{{ project.repo_url or "" }}"
+        />
+      </div>
+      <div class="form-row">
+        <label for="estimated_hours">Estimated hours</label>
+        <input
+          id="estimated_hours"
+          name="estimated_hours"
+          type="number"
+          min="0"
+          step="1"
+          value="{{ project.estimated_hours if project.estimated_hours is not none else "" }}"
+        />
+      </div>
+      <button type="submit">Save changes</button>
+    </form>
+  </div>
+{% endblock %}
